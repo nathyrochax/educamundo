@@ -1,0 +1,858 @@
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EducaMundo 🚀</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+    scroll-behavior:smooth;
+}
+
+body{
+    background:#f7f7ff;
+    color:#222;
+    overflow-x:hidden;
+}
+
+/* FUNDO COLORIDO */
+
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#ff4ecd;
+    filter:blur(150px);
+    opacity:.25;
+    top:-150px;
+    left:-150px;
+    z-index:-1;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:#00e5ff;
+    filter:blur(150px);
+    opacity:.25;
+    bottom:-150px;
+    right:-150px;
+    z-index:-1;
+}
+
+/* MENU */
+
+nav{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(20,10,60,.9);
+    backdrop-filter:blur(15px);
+    padding:18px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    color:white;
+}
+
+.logo{
+    font-size:25px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#00e5ff;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    margin:0 12px;
+    font-weight:bold;
+}
+
+nav a:hover{
+    color:#00e5ff;
+}
+
+/* HERO */
+
+.hero{
+    min-height:90vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px 20px;
+    background:
+    linear-gradient(135deg,#6a11cb,#2575fc,#00d4ff,#ff4ecd);
+    background-size:400% 400%;
+    animation:gradient 10s infinite alternate;
+    color:white;
+}
+
+@keyframes gradient{
+    0%{background-position:0% 50%}
+    100%{background-position:100% 50%}
+}
+
+.hero-content{
+    max-width:900px;
+}
+
+.hero h1{
+    font-size:clamp(45px,8vw,90px);
+    margin-bottom:20px;
+    text-shadow:0 5px 20px rgba(0,0,0,.3);
+}
+
+.hero p{
+    font-size:22px;
+    line-height:1.6;
+}
+
+.btn{
+    display:inline-block;
+    margin-top:30px;
+    padding:16px 30px;
+    border-radius:50px;
+    background:white;
+    color:#5d22c9;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+    cursor:pointer;
+    border:none;
+    font-size:16px;
+}
+
+.btn:hover{
+    transform:scale(1.08);
+    box-shadow:0 10px 30px rgba(0,0,0,.25);
+}
+
+/* SEÇÕES */
+
+section{
+    padding:80px 8%;
+}
+
+.titulo{
+    text-align:center;
+    font-size:45px;
+    margin-bottom:15px;
+    background:linear-gradient(90deg,#ff1493,#6a11cb,#00bfff);
+    color:transparent;
+    background-clip:text;
+}
+
+.subtitulo{
+    text-align:center;
+    color:#666;
+    margin-bottom:50px;
+    font-size:18px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    gap:25px;
+}
+
+.card{
+    padding:30px;
+    border-radius:25px;
+    color:white;
+    min-height:230px;
+    transition:.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.card:hover{
+    transform:translateY(-12px) rotate(1deg);
+    box-shadow:0 20px 40px rgba(0,0,0,.2);
+}
+
+.card:nth-child(1){
+    background:linear-gradient(135deg,#ff416c,#ff4b2b);
+}
+
+.card:nth-child(2){
+    background:linear-gradient(135deg,#4776e6,#8e54e9);
+}
+
+.card:nth-child(3){
+    background:linear-gradient(135deg,#00c6ff,#0072ff);
+}
+
+.card:nth-child(4){
+    background:linear-gradient(135deg,#11998e,#38ef7d);
+}
+
+.card h3{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.card p{
+    line-height:1.6;
+}
+
+/* CURIOSIDADE */
+
+.curiosidade{
+    background:linear-gradient(135deg,#1e1e50,#521b8f);
+    color:white;
+    text-align:center;
+}
+
+.curiosidade-box{
+    max-width:800px;
+    margin:auto;
+    padding:45px;
+    border-radius:30px;
+    background:rgba(255,255,255,.12);
+    backdrop-filter:blur(15px);
+}
+
+.curiosidade-box h3{
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+#fact{
+    font-size:22px;
+    line-height:1.6;
+}
+
+/* FUTURO */
+
+.futuro{
+    background:#fff;
+}
+
+.timeline{
+    max-width:900px;
+    margin:auto;
+}
+
+.item{
+    padding:30px;
+    margin:25px 0;
+    border-radius:20px;
+    background:#f1f1ff;
+    border-left:8px solid #6a11cb;
+    transition:.3s;
+}
+
+.item:hover{
+    transform:translateX(10px);
+    background:#e8e2ff;
+}
+
+.item h3{
+    color:#6a11cb;
+    margin-bottom:10px;
+}
+
+/* QUIZ */
+
+.quiz{
+    background:linear-gradient(135deg,#ff512f,#dd2476);
+    color:white;
+    text-align:center;
+}
+
+.quiz-box{
+    max-width:750px;
+    margin:auto;
+    background:white;
+    color:#222;
+    padding:40px;
+    border-radius:30px;
+    box-shadow:0 20px 50px rgba(0,0,0,.2);
+}
+
+.question{
+    font-size:25px;
+    margin-bottom:30px;
+    font-weight:bold;
+}
+
+.option{
+    display:block;
+    width:100%;
+    padding:15px;
+    margin:12px 0;
+    border:none;
+    border-radius:15px;
+    background:#eee;
+    cursor:pointer;
+    font-size:17px;
+    transition:.3s;
+}
+
+.option:hover{
+    background:#d8d8ff;
+    transform:scale(1.02);
+}
+
+#resultado{
+    margin-top:20px;
+    font-size:20px;
+    font-weight:bold;
+}
+
+/* NÚMEROS */
+
+.numeros{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:25px;
+    text-align:center;
+}
+
+.numero{
+    padding:35px;
+    border-radius:25px;
+    background:white;
+    box-shadow:0 10px 30px rgba(0,0,0,.1);
+}
+
+.numero strong{
+    display:block;
+    font-size:50px;
+    color:#6a11cb;
+}
+
+.numero span{
+    font-size:18px;
+}
+
+/* FOOTER */
+
+footer{
+    background:#15152e;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+footer h2{
+    color:#00e5ff;
+    margin-bottom:15px;
+}
+
+footer p{
+    color:#ccc;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:700px){
+
+    nav{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    nav a{
+        font-size:14px;
+        margin:5px;
+    }
+
+    .hero h1{
+        font-size:50px;
+    }
+
+    section{
+        padding:60px 5%;
+    }
+
+    .titulo{
+        font-size:35px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- MENU -->
+
+<nav>
+
+<div class="logo">
+🌎 Educa<span>Mundo</span>
+</div>
+
+<div>
+<a href="#inicio">Início</a>
+<a href="#aprender">Aprender</a>
+<a href="#curiosidades">Curiosidades</a>
+<a href="#futuro">Futuro</a>
+<a href="#quiz">Quiz</a>
+</div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="inicio">
+
+<div class="hero-content">
+
+<h1>🚀 EDUCAÇÃO QUE TRANSFORMA O MUNDO</h1>
+
+<p>
+E se aprender fosse uma aventura?
+Descubra conhecimentos, curiosidades,
+tecnologia e ideias que podem mudar seu futuro.
+</p>
+
+<a href="#aprender" class="btn">
+COMEÇAR A EXPLORAR ✨
+</a>
+
+</div>
+
+</section>
+
+
+<!-- ÁREAS -->
+
+<section id="aprender">
+
+<h2 class="titulo">🌈 Descubra o Poder de Aprender</h2>
+
+<p class="subtitulo">
+A educação está presente em praticamente tudo ao nosso redor.
+</p>
+
+<div class="cards">
+
+<div class="card">
+
+<h3>🧠 Inteligência</h3>
+
+<p>
+Aprender desenvolve nossa capacidade de pensar,
+resolver problemas, criar ideias e compreender
+melhor o mundo.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>💻 Tecnologia</h3>
+
+<p>
+Computadores, inteligência artificial e internet
+estão criando novas maneiras de estudar,
+trabalhar e compartilhar conhecimento.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🌎 Conhecimento</h3>
+
+<p>
+Geografia, história, ciência, matemática e muitas
+outras áreas ajudam a explicar como o mundo funciona.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h3>🚀 Futuro</h3>
+
+<p>
+As profissões do futuro exigirão criatividade,
+curiosidade, pensamento crítico e capacidade
+de aprender continuamente.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- CURIOSIDADES -->
+
+<section class="curiosidade" id="curiosidades">
+
+<h2 class="titulo" style="color:white;">
+🤯 Você Sabia?
+</h2>
+
+<p class="subtitulo" style="color:#ddd;">
+Clique no botão e descubra uma nova curiosidade!
+</p>
+
+<div class="curiosidade-box">
+
+<h3>💡 Curiosidade do momento</h3>
+
+<p id="fact">
+A educação não acontece somente dentro da escola.
+Podemos aprender através de livros, experiências,
+pessoas, tecnologia e até mesmo através dos nossos erros.
+</p>
+
+<button class="btn" onclick="novaCuriosidade()">
+🔄 NOVA CURIOSIDADE
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FUTURO -->
+
+<section class="futuro" id="futuro">
+
+<h2 class="titulo">🔮 O Futuro da Educação</h2>
+
+<p class="subtitulo">
+Como a tecnologia pode transformar a maneira de aprender?
+</p>
+
+<div class="timeline">
+
+<div class="item">
+
+<h3>🤖 Inteligência Artificial</h3>
+
+<p>
+Ferramentas de IA podem ajudar estudantes a pesquisar,
+praticar conteúdos, receber explicações e criar projetos.
+</p>
+
+</div>
+
+
+<div class="item">
+
+<h3>🥽 Realidade Virtual</h3>
+
+<p>
+Imagine estudar o espaço visitando uma estação espacial
+virtual ou conhecer a Roma Antiga através de uma experiência
+imersiva.
+</p>
+
+</div>
+
+
+<div class="item">
+
+<h3>🎮 Aprender Jogando</h3>
+
+<p>
+Jogos educativos podem transformar exercícios em desafios,
+missões e aventuras, tornando o aprendizado mais interativo.
+</p>
+
+</div>
+
+
+<div class="item">
+
+<h3>🌐 Educação sem Fronteiras</h3>
+
+<p>
+A internet permite que pessoas tenham acesso a cursos,
+vídeos, livros e conteúdos produzidos em diferentes lugares
+do mundo.
+</p>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- NÚMEROS -->
+
+<section>
+
+<h2 class="titulo">📊 Educação em Ação</h2>
+
+<p class="subtitulo">
+Pequenas atitudes podem fazer uma grande diferença.
+</p>
+
+<div class="numeros">
+
+<div class="numero">
+
+<strong>1</strong>
+
+<span>
+Nova coisa aprendida por dia
+</span>
+
+</div>
+
+
+<div class="numero">
+
+<strong>365</strong>
+
+<span>
+Dias para descobrir algo novo
+</span>
+
+</div>
+
+
+<div class="numero">
+
+<strong>∞</strong>
+
+<span>
+Possibilidades de aprender
+</span>
+
+</div>
+
+
+<div class="numero">
+
+<strong>🚀</strong>
+
+<span>
+Um futuro cheio de possibilidades
+</span>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- QUIZ -->
+
+<section class="quiz" id="quiz">
+
+<h2 class="titulo" style="color:white;">
+🎯 TESTE SEU CONHECIMENTO
+</h2>
+
+<p class="subtitulo" style="color:#eee;">
+Será que você consegue acertar?
+</p>
+
+<div class="quiz-box">
+
+<div class="question" id="question">
+Qual destas tecnologias pode ajudar na educação?
+</div>
+
+<button class="option" onclick="responder(false)">
+🍔 Fast Food
+</button>
+
+<button class="option" onclick="responder(true)">
+🤖 Inteligência Artificial
+</button>
+
+<button class="option" onclick="responder(false)">
+🚗 Combustível
+</button>
+
+<button class="option" onclick="responder(false)">
+🏖️ Guarda-sol
+</button>
+
+<p id="resultado"></p>
+
+<button class="btn" onclick="proximaPergunta()">
+➡️ PRÓXIMA PERGUNTA
+</button>
+
+</div>
+
+</section>
+
+
+<!-- FINAL -->
+
+<footer>
+
+<h2>🌎 EducaMundo</h2>
+
+<p>
+Conhecimento é uma das ferramentas mais poderosas
+que uma pessoa pode levar para o futuro.
+</p>
+
+<br>
+
+<p>
+✨ Aprenda. Explore. Crie. Transforme.
+</p>
+
+</footer>
+
+
+<script>
+
+/* CURIOSIDADES */
+
+const curiosidades = [
+
+"🧠 O cérebro humano é capaz de aprender novas habilidades durante toda a vida.",
+
+"🌎 A educação pode acontecer em qualquer lugar: escola, casa, biblioteca, internet ou até durante uma conversa.",
+
+"💻 A programação permite criar sites, aplicativos, jogos e muitas outras tecnologias.",
+
+"🤖 A Inteligência Artificial pode ser utilizada como ferramenta de apoio ao aprendizado.",
+
+"📚 Ler regularmente pode ajudar a ampliar o vocabulário e o conhecimento sobre diferentes assuntos.",
+
+"🚀 Muitos avanços científicos começaram com uma simples pergunta: 'E se...?'",
+
+"🎮 Jogos também podem ser utilizados para ensinar matemática, história, lógica e estratégia."
+
+];
+
+function novaCuriosidade(){
+
+let numero = Math.floor(Math.random()*curiosidades.length);
+
+document.getElementById("fact").innerText =
+curiosidades[numero];
+
+}
+
+
+/* QUIZ */
+
+let perguntas = [
+
+{
+pergunta:"Qual destas tecnologias pode ajudar na educação?",
+opcoes:["🍔 Fast Food","🤖 Inteligência Artificial","🚗 Combustível","🏖️ Guarda-sol"],
+correta:1
+},
+
+{
+pergunta:"Qual habilidade é importante para aprender coisas novas?",
+opcoes:["🧠 Curiosidade","😴 Dormir o dia inteiro","📺 Nunca estudar","🚫 Não fazer perguntas"],
+correta:0
+},
+
+{
+pergunta:"Qual destas opções é uma área do conhecimento?",
+opcoes:["🔬 Ciência","🍕 Pizza","🚲 Bicicleta","☂️ Guarda-chuva"],
+correta:0
+},
+
+{
+pergunta:"O que a programação pode ajudar a criar?",
+opcoes:["💻 Sites e jogos","🥪 Sanduíches","👟 Tênis","🌳 Árvores"],
+correta:0
+}
+
+];
+
+let perguntaAtual=0;
+let pontos=0;
+
+function carregarPergunta(){
+
+let p=perguntas[perguntaAtual];
+
+document.getElementById("question").innerText=p.pergunta;
+
+let botoes=document.querySelectorAll(".option");
+
+botoes.forEach((botao,index)=>{
+
+botao.innerText=p.opcoes[index];
+
+botao.onclick=function(){
+
+responder(index===p.correta);
+
+};
+
+});
+
+document.getElementById("resultado").innerText="";
+
+}
+
+function responder(acertou){
+
+if(acertou){
+
+pontos++;
+
+document.getElementById("resultado").innerText=
+"🎉 ACERTOU! Muito bem!";
+
+}else{
+
+document.getElementById("resultado").innerText=
+"❌ Quase! Tente a próxima.";
+
+}
+
+}
+
+function proximaPergunta(){
+
+perguntaAtual++;
+
+if(perguntaAtual>=perguntas.length){
+
+document.getElementById("question").innerText=
+"🏆 QUIZ FINALIZADO!";
+
+document.getElementById("resultado").innerText=
+"Você fez "+pontos+" de "+perguntas.length+" pontos! 🚀";
+
+return;
+
+}
+
+carregarPergunta();
+
+}
+
+</script>
+
+</body>
+</html>
+```
